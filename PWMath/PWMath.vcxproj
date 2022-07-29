@@ -19,7 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\PWMath\Macros.h" />
+    <ClInclude Include="include\PWMath\Matrix.h" />
+    <ClInclude Include="include\PWMath\Packing.h" />
     <ClInclude Include="include\PWMath\PWMath.h" />
+    <ClInclude Include="include\PWMath\Vector.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

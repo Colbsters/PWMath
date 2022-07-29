@@ -18,5 +18,17 @@
     <ClInclude Include="include\PWMath\PWMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\PWMath\Vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PWMath\Matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PWMath\Packing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PWMath\Macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
