@@ -1,0 +1,6 @@
+# Visual Studio cache
+.vs/
+
+# Binary and intermediate directories
+bin/
+bin-int/
