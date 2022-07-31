@@ -21,7 +21,6 @@ namespace PWMath
 		{
 			struct { T x, y; };
 			struct { T r, g; };
-			struct { T s, t; };
 			T array[2];
 		};
 
