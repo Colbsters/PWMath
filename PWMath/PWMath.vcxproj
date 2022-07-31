@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\PWMath\Vector3.h" />
     <ClInclude Include="include\PWMath\Macros.h" />
     <ClInclude Include="include\PWMath\Matrix.h" />
     <ClInclude Include="include\PWMath\Packing.h" />
@@ -28,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="include\PWMath\Impl\Vector2.inl" />
+    <None Include="include\PWMath\Impl\Vector3.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
