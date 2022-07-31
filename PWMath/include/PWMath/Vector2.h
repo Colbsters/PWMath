@@ -51,7 +51,7 @@ namespace PWMath
 
 		T Length();
 		T Length2();
-		Vector<T, 2, P> Normalize();
+		Vector Normalize();
 		T Dot(const Vector<T, 2, P>& rhs);
 	};
 
