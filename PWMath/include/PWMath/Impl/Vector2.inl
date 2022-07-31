@@ -138,25 +138,25 @@ namespace PWMath
 #pragma region Other functions
 
 	template<typename T, PackingMode P>
-	T Length<T, 2, P>(const Vector<T, 2, P>& vector)
+	T Length(const Vector<T, 2, P>& vector)
 	{
 		return std::sqrt(Length2(vector));
 	}
 
 	template<typename T, PackingMode P>
-	T Length2<T, 2, P>(const Vector<T, 2, P>& vector)
+	T Length2(const Vector<T, 2, P>& vector)
 	{
 		return (vector.x * vector.x) + (vector.y * vector.y);
 	}
 
 	template<typename T, PackingMode P>
-	Vector<T, 2, P> Normalize<T, 2, P>(const Vector<T, 2, P>& vector)
+	Vector<T, 2, P> Normalize(const Vector<T, 2, P>& vector)
 	{
 		return vector / Length(vector);
 	}
 
 	template<typename T, PackingMode P>
-	T Dot<T, 2, P>(const Vector<T, 2, P>& lhs, const Vector<T, 2, P>& rhs)
+	T Dot(const Vector<T, 2, P>& lhs, const Vector<T, 2, P>& rhs)
 	{
 		return (lhs.x * rhs.x) + (lhs.y * rhs.y);
 	}
