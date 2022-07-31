@@ -42,6 +42,9 @@ namespace PWMath
 		template<typename Tvec, PackingMode Pvec>
 		Vector(const Vector<Tvec, 2, Pvec>& rhs) noexcept :x{ static_cast<T>(rhs.x) }, y{ static_cast<T>(rhs.y) } {}
 
+		T& operator[](size_t index) { return array[index]; }
+		const T& operator[](size_t index) const { return array[index]; }
+
 		Vector& operator=(const Vector& rhs) = default;
 
 		bool operator==(const Vector& rhs) const = default;
