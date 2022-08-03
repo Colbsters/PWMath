@@ -15,5 +15,7 @@ int main()
 	std::cout << PWMath::Vector3_F32{ 4, 3, 0 }.Length() << '\n';
 	std::cout << PWMath::Vector3_F32{ 1, 0, 0 }.Cross(PWMath::Vector3_F32{ 0, 1, 0 }) << '\n';
 
+	std::cout << PWMath::Vector4_F32{ a, 0 } << '\n';
+
 	return 0;
 }
