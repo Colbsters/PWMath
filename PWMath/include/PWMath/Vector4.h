@@ -1,7 +1,5 @@
 #pragma once
 #include <PWMath/Vector.h>
-#include <PWMath/Vector2.h>
-#include <PWMath/Vector3.h>
 
 #if PWM_DEFINE_OSTREAM
 #include <ostream>
@@ -59,6 +57,11 @@ namespace PWMath
 		T Length2();
 		Vector Normalize();
 		T Dot(const Vector<T, 4, P>& rhs);
+
+
+		constexpr Vector<T, 2, P> Swizzle(size_t index0, size_t index1) { return Vector<T, 2, P>{ array[index0], array[index1] }; }
+		constexpr Vector<T, 3, P> Swizzle(size_t index0, size_t index1, size_t index2) { return Vector<T, 3, P>{ array[index0], array[index1], array[index2] }; }
+		constexpr Vector<T, 4, P> Swizzle(size_t index0, size_t index1, size_t index2, size_t index3) { return Vector<T, 4, P>{ array[index0], array[index1], array[index2], array[index3] }; }
 	};
 
 	template<typename T, PackingMode P>

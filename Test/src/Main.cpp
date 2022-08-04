@@ -5,17 +5,11 @@
 int main()
 {
 
-	PWMath::Vector3_F32 a, b{ 2, 3, 1 };
+	PWMath::Vector2_F32 a, b{ 2, 3 };
 	a = b;
-	std::cout << a << '\n';
-	a += b;
-	std::cout << a << '\n';
-	std::cout << PWMath::Dot(a, b) << '\n';
-	std::cout << PWMath::Vector3_F64{ a } << '\n';
-	std::cout << PWMath::Vector3_F32{ 4, 3, 0 }.Length() << '\n';
-	std::cout << PWMath::Vector3_F32{ 1, 0, 0 }.Cross(PWMath::Vector3_F32{ 0, 1, 0 }) << '\n';
-
-	std::cout << PWMath::Vector4_F32{ a, 0 } << '\n';
+	auto c = a.Swizzle(0, 1, 0, 1);
+	auto d = c.Swizzle(3, 2, 1);
+	std::cout << d << '\n';
 
 	return 0;
 }

@@ -1,6 +1,5 @@
 #pragma once
 #include <PWMath/Vector.h>
-#include <PWMath/Vector2.h>
 
 #if PWM_DEFINE_OSTREAM
 #include <ostream>
@@ -32,7 +31,8 @@ namespace PWMath
 		
 		// Special constructors and destructors
 		Vector(T values) noexcept :x{ values }, y{ values }, z{ values } {}
-		Vector(T x, T y, T z) noexcept :x{ x }, y{ y }, z{ z } {}
+		Vector(T x, T y, T z) noexcept :x{ x }, y{ y }, z{ z }
+		{}
 		Vector(const Vector2<T, P>& xy, T z) noexcept :x{ xy.x }, y{ xy.y }, z{ z } {}
 		Vector(T x, const Vector2<T, P>& yz) noexcept :x{ x }, y{ yz.y }, z{ yz.z } {}
 		Vector(T(&values)[3]) noexcept :x{ values[0] }, y{ values[1] }, z{ values[2] } {}
@@ -61,6 +61,11 @@ namespace PWMath
 		Vector Normalize();
 		T Dot(const Vector<T, 3, P>& rhs);
 		Vector Cross(const Vector<T, 3, P>& rhs);
+
+
+		constexpr Vector<T, 2, P> Swizzle(size_t index0, size_t index1) { return Vector<T, 2, P>{ array[index0], array[index1] }; }
+		constexpr Vector<T, 3, P> Swizzle(size_t index0, size_t index1, size_t index2) { return Vector<T, 3, P>{ array[index0], array[index1], array[index2] }; }
+		constexpr Vector<T, 4, P> Swizzle(size_t index0, size_t index1, size_t index2, size_t index3) { return Vector<T, 4, P>{ array[index0], array[index1], array[index2], array[index3] }; }
 	};
 
 	template<typename T, PackingMode P>
