@@ -46,17 +46,17 @@ namespace PWMath
 		template<typename Tvec, PackingMode Pvec>
 		constexpr Vector(const Vector<Tvec, 4, Pvec>& rhs) noexcept :x{ static_cast<T>(rhs.x) }, y{ static_cast<T>(rhs.y) }, z{ static_cast<T>(rhs.z) }, w{ static_cast<T>(rhs.w) } {}
 
-		T& operator[](size_t index) { return array[index]; }
-		const T& operator[](size_t index) const { return array[index]; }
+		constexpr T& operator[](size_t index) { return array[index]; }
+		constexpr const T& operator[](size_t index) const { return array[index]; }
 
 		Vector& operator=(const Vector& rhs) = default;
 
 		bool operator==(const Vector& rhs) const = default;
 
-		T Length();
-		T Length2();
-		Vector Normalize();
-		T Dot(const Vector<T, 4, P>& rhs);
+		constexpr T Length();
+		constexpr T Length2();
+		constexpr Vector Normalize();
+		constexpr T Dot(const Vector<T, 4, P>& rhs);
 
 
 		constexpr Vector<T, 2, P> Swizzle(size_t index0, size_t index1) { return Vector<T, 2, P>{ array[index0], array[index1] }; }
@@ -65,59 +65,59 @@ namespace PWMath
 	};
 
 	template<typename T, PackingMode P>
-	Vector<T, 4, P> operator+(const Vector<T, 4, P>& lhs, T rhs) noexcept;
+	constexpr Vector<T, 4, P> operator+(const Vector<T, 4, P>& lhs, T rhs) noexcept;
 	template<typename T, PackingMode P>
-	Vector<T, 4, P> operator-(const Vector<T, 4, P>& lhs, T rhs) noexcept;
+	constexpr Vector<T, 4, P> operator-(const Vector<T, 4, P>& lhs, T rhs) noexcept;
 	template<typename T, PackingMode P>
-	Vector<T, 4, P> operator*(const Vector<T, 4, P>& lhs, T rhs) noexcept;
+	constexpr Vector<T, 4, P> operator*(const Vector<T, 4, P>& lhs, T rhs) noexcept;
 	template<typename T, PackingMode P>
-	Vector<T, 4, P> operator/(const Vector<T, 4, P>& lhs, T rhs) noexcept;
+	constexpr Vector<T, 4, P> operator/(const Vector<T, 4, P>& lhs, T rhs) noexcept;
 	template<typename T, PackingMode P>	
-	const Vector<T, 4, P>& operator+=(Vector<T, 4, P>& lhs, T rhs) noexcept;
+	constexpr const Vector<T, 4, P>& operator+=(Vector<T, 4, P>& lhs, T rhs) noexcept;
 	template<typename T, PackingMode P>	
-	const Vector<T, 4, P>& operator-=(Vector<T, 4, P>& lhs, T rhs) noexcept;
+	constexpr const Vector<T, 4, P>& operator-=(Vector<T, 4, P>& lhs, T rhs) noexcept;
 	template<typename T, PackingMode P>	
-	const Vector<T, 4, P>& operator*=(Vector<T, 4, P>& lhs, T rhs) noexcept;
+	constexpr const Vector<T, 4, P>& operator*=(Vector<T, 4, P>& lhs, T rhs) noexcept;
 	template<typename T, PackingMode P>	
-	const Vector<T, 4, P>& operator/=(Vector<T, 4, P>& lhs, T rhs) noexcept;
+	constexpr const Vector<T, 4, P>& operator/=(Vector<T, 4, P>& lhs, T rhs) noexcept;
 
 	template<typename T, PackingMode P>	
-	Vector<T, 4, P> operator+(const Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
+	constexpr Vector<T, 4, P> operator+(const Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
 	template<typename T, PackingMode P>	
-	Vector<T, 4, P> operator-(const Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
+	constexpr Vector<T, 4, P> operator-(const Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
 	template<typename T, PackingMode P>	
-	Vector<T, 4, P> operator*(const Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
+	constexpr Vector<T, 4, P> operator*(const Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
 	template<typename T, PackingMode P>	
-	Vector<T, 4, P> operator/(const Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
+	constexpr Vector<T, 4, P> operator/(const Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
 	template<typename T, PackingMode P>	
-	const Vector<T, 4, P>& operator+=(Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
+	constexpr const Vector<T, 4, P>& operator+=(Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
 	template<typename T, PackingMode P>	
-	const Vector<T, 4, P>& operator-=(Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
+	constexpr const Vector<T, 4, P>& operator-=(Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
 	template<typename T, PackingMode P>	
-	const Vector<T, 4, P>& operator*=(Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
+	constexpr const Vector<T, 4, P>& operator*=(Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
 	template<typename T, PackingMode P>	
-	const Vector<T, 4, P>& operator/=(Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
+	constexpr const Vector<T, 4, P>& operator/=(Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs) noexcept;
 
 	template<typename T, PackingMode P>
-	Vector<T, 4, P> operator+(T lhs, const Vector<T, 4, P>& rhs) noexcept;
+	constexpr Vector<T, 4, P> operator+(T lhs, const Vector<T, 4, P>& rhs) noexcept;
 	template<typename T, PackingMode P>
-	Vector<T, 4, P> operator-(T lhs, const Vector<T, 4, P>& rhs) noexcept;
+	constexpr Vector<T, 4, P> operator-(T lhs, const Vector<T, 4, P>& rhs) noexcept;
 	template<typename T, PackingMode P>
-	Vector<T, 4, P> operator*(T lhs, const Vector<T, 4, P>& rhs) noexcept;
+	constexpr Vector<T, 4, P> operator*(T lhs, const Vector<T, 4, P>& rhs) noexcept;
 	template<typename T, PackingMode P>
-	Vector<T, 4, P> operator/(T lhs, const Vector<T, 4, P>& rhs) noexcept;
+	constexpr Vector<T, 4, P> operator/(T lhs, const Vector<T, 4, P>& rhs) noexcept;
 
 	template<typename T, PackingMode P>
-	T Length(const Vector<T, 4, P>& vector);
+	constexpr T Length(const Vector<T, 4, P>& vector);
 
 	template<typename T, PackingMode P>
-	T Length2(const Vector<T, 4, P>& vector);
+	constexpr T Length2(const Vector<T, 4, P>& vector);
 
 	template<typename T, PackingMode P>
-	Vector<T, 4, P> Normalize(const Vector<T, 4, P>& vector);
+	constexpr Vector<T, 4, P> Normalize(const Vector<T, 4, P>& vector);
 
 	template<typename T, PackingMode P>
-	T Dot(const Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs);
+	constexpr T Dot(const Vector<T, 4, P>& lhs, const Vector<T, 4, P>& rhs);
 
 #if PWM_DEFINE_OSTREAM
 	template<typename T, PackingMode P>
