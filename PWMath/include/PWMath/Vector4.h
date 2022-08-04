@@ -13,7 +13,7 @@ namespace PWMath
 	struct Vector<T, 4, P>
 	{
 	public:
-		using type = T;
+		using Type = T;
 		static constexpr size_t length = 4;
 		static constexpr PackingMode packingMode = P;
 
