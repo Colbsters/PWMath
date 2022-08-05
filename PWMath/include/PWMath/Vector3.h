@@ -14,7 +14,7 @@ namespace PWMath
 	{
 	public:
 		using Type = T;
-		static constexpr size_t length = 3;
+		static constexpr size_t size = 3;
 		static constexpr PackingMode packingMode = P;
 
 		union
@@ -30,23 +30,18 @@ namespace PWMath
 		~Vector() = default;
 		
 		// Special constructors and destructors
-		constexpr Vector(T values) noexcept :x{ values }, y{ values }, z{ values } {}
-		constexpr Vector(T x, T y, T z) noexcept :x{ x }, y{ y }, z{ z } {}
-		constexpr Vector(const Vector2<T, P>& xy, T z) noexcept :x{ xy.x }, y{ xy.y }, z{ z } {}
-		constexpr Vector(T x, const Vector2<T, P>& yz) noexcept :x{ x }, y{ yz.y }, z{ yz.z } {}
-		constexpr Vector(T(&values)[3]) noexcept :x{ values[0] }, y{ values[1] }, z{ values[2] } {}
-		template<typename Tval>
-		constexpr Vector(Tval values) noexcept :x{ static_cast<T>(values) }, y{ static_cast<T>(values) }, z{ static_cast<T>(values) } {}
-		template<typename Tx, typename Ty, typename Tz>
-		constexpr Vector(Tx x, Ty y, Tz z) noexcept :x{ static_cast<T>(x) }, y{ static_cast<T>(y) }, z{ static_cast<T>(z) } {}
-		template<typename Tvec, PackingMode Pvec>
-		constexpr Vector(const Vector2<Tvec, Pvec>& xy, Tvec z) noexcept :x{ static_cast<T>(xy.x) }, y{ static_cast<T>(xy.y) }, z{ static_cast<T>(z) } {}
-		template<typename Tvec, PackingMode Pvec>
-		constexpr Vector(Tvec x, const Vector2<Tvec, Pvec>& yz) noexcept :x{ static_cast<T>(x) }, y{ static_cast<T>(yz.y) }, z{ static_cast<T>(yz.z) } {}
-		template<typename Tarr>
-		constexpr Vector(Tarr (&values)[3]) noexcept :x{ static_cast<T>(values[0]) }, y{ static_cast<T>(values[1]) }, z{ static_cast<T>(values[2])} {}
-		template<typename Tvec, PackingMode Pvec>
-		constexpr Vector(const Vector<Tvec, 3, Pvec>& rhs) noexcept :x{ static_cast<T>(rhs.x) }, y{ static_cast<T>(rhs.y) }, z{ static_cast<T>(rhs.z) } {}
+		template<typename TVal>
+		constexpr Vector(TVal values) noexcept :array{ static_cast<T>(values), static_cast<T>(values), static_cast<T>(values) } {}
+		template<typename TX, typename TY, typename TZ>
+		constexpr Vector(TX x, TY y, TZ z) noexcept :array{ static_cast<T>(x), static_cast<T>(y), static_cast<T>(z) } {}
+		template<typename TArr>
+		constexpr Vector(TArr (&values)[3]) noexcept :array{ static_cast<T>(values[0]), static_cast<T>(values[1]), static_cast<T>(values[2]) } {}
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(const Vector2<TVec, PVec>& xy, TVec z) noexcept :array{ static_cast<T>(xy.x), static_cast<T>(xy.y), static_cast<T>(z) } {}
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(TVec x, const Vector2<TVec, PVec>& yz) noexcept :array{ static_cast<T>(x), static_cast<T>(yz.y), static_cast<T>(yz.z) } {}
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(const Vector<TVec, 3, PVec>& rhs) noexcept :array{ static_cast<T>(rhs.x), static_cast<T>(rhs.y),  static_cast<T>(rhs.z) } {}
 
 		constexpr T& operator[](size_t index) { return array[index]; }
 		constexpr const T& operator[](size_t index) const { return array[index]; }
@@ -137,16 +132,16 @@ namespace PWMath
 	template<typename T, PackingMode P = PackingMode::Default>
 	using Vector3 = Vector<T, 3, P>;
 
-	using Vector3_F32		= Vector3<float>;
-	using Vector3_F64		= Vector3<double>;
-	using Vector3_I8		= Vector3<int8_t>;
-	using Vector3_I16		= Vector3<int16_t>;
-	using Vector3_I32		= Vector3<int32_t>;
-	using Vector3_I64		= Vector3<int64_t>;
-	using Vector3_U8		= Vector3<uint8_t>;
-	using Vector3_U16		= Vector3<uint16_t>;
-	using Vector3_U32		= Vector3<uint32_t>;
-	using Vector3_U64		= Vector3<uint64_t>;
+	using Vector3F32	= Vector3<float>;
+	using Vector3F64	= Vector3<double>;
+	using Vector3I8		= Vector3<int8_t>;
+	using Vector3I16	= Vector3<int16_t>;
+	using Vector3I32	= Vector3<int32_t>;
+	using Vector3I64	= Vector3<int64_t>;
+	using Vector3U8		= Vector3<uint8_t>;
+	using Vector3U16	= Vector3<uint16_t>;
+	using Vector3U32	= Vector3<uint32_t>;
+	using Vector3U64	= Vector3<uint64_t>;
 }
 
 #include <PWMath/Impl/Vector3.inl>

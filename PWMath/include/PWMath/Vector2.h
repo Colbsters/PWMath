@@ -14,7 +14,7 @@ namespace PWMath
 	{
 	public:
 		using Type = T;
-		static constexpr size_t length = 2;
+		static constexpr size_t size = 2;
 		static constexpr PackingMode packingMode = P;
 
 		union
@@ -30,17 +30,14 @@ namespace PWMath
 		~Vector() = default;
 		
 		// Special constructors and destructors
-		constexpr Vector(T values) noexcept :x{ values }, y{ values } {}
-		constexpr Vector(T x, T y) noexcept :x{ x }, y{ y } {}
-		constexpr Vector(T (&values)[2]) noexcept :x{ values[0] }, y{ values[1] } {}
-		template<typename Tval>
-		constexpr Vector(Tval values) noexcept :x{ static_cast<T>(values) }, y{ static_cast<T>(values) } {}
-		template<typename Tx, typename Ty>
-		constexpr Vector(Tx x, Ty y) noexcept :x{ static_cast<T>(x) }, y{ static_cast<T>(y) } {}
-		template<typename Tarr>
-		constexpr Vector(Tarr (&values)[2]) noexcept :x{ static_cast<T>(values[0]) }, y{ static_cast<T>(values[1]) } {}
-		template<typename Tvec, PackingMode Pvec>
-		constexpr Vector(const Vector<Tvec, 2, Pvec>& rhs) noexcept :x{ static_cast<T>(rhs.x) }, y{ static_cast<T>(rhs.y) } {}
+		template<typename TVal>
+		constexpr Vector(TVal values) noexcept :array{ static_cast<T>(values), static_cast<T>(values) } {}
+		template<typename TX, typename TY>
+		constexpr Vector(TX x, TY y) noexcept :array{ static_cast<T>(x), static_cast<T>(y) } {}
+		template<typename TArr>
+		constexpr Vector(TArr (&values)[2]) noexcept :array{ static_cast<T>(values[0]), static_cast<T>(values[1]) } {}
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(const Vector<TVec, 2, PVec>& rhs) noexcept :array{ static_cast<T>(rhs.x), static_cast<T>(rhs.y) } {}
 
 		constexpr T& operator[](size_t index) { return array[index]; }
 		constexpr const T& operator[](size_t index) const { return array[index]; }
@@ -126,16 +123,16 @@ namespace PWMath
 	template<typename T, PackingMode P = PackingMode::Default>
 	using Vector2 = Vector<T, 2, P>;
 
-	using Vector2_F32		= Vector2<float>;
-	using Vector2_F64		= Vector2<double>;
-	using Vector2_I8		= Vector2<int8_t>;
-	using Vector2_I16		= Vector2<int16_t>;
-	using Vector2_I32		= Vector2<int32_t>;
-	using Vector2_I64		= Vector2<int64_t>;
-	using Vector2_U8		= Vector2<uint8_t>;
-	using Vector2_U16		= Vector2<uint16_t>;
-	using Vector2_U32		= Vector2<uint32_t>;
-	using Vector2_U64		= Vector2<uint64_t>;
+	using Vector2F32	= Vector2<float>;
+	using Vector2F64	= Vector2<double>;
+	using Vector2I8		= Vector2<int8_t>;
+	using Vector2I16	= Vector2<int16_t>;
+	using Vector2I32	= Vector2<int32_t>;
+	using Vector2I64	= Vector2<int64_t>;
+	using Vector2U8		= Vector2<uint8_t>;
+	using Vector2U16	= Vector2<uint16_t>;
+	using Vector2U32	= Vector2<uint32_t>;
+	using Vector2U64	= Vector2<uint64_t>;
 }
 
 #include <PWMath/Impl/Vector2.inl>
