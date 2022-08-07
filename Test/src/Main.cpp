@@ -4,12 +4,8 @@
 
 int main()
 {
-
-	PWMath::Vector2_F32 a, b{ 2, 3 };
-	a = b;
-	auto c = a.Swizzle(0, 1, 0, 1);
-	auto d = c.Swizzle(3, 2, 1);
-	std::cout << d << '\n';
+	PWMath::Vector2F32 a{ 2.0f, 1.0f };
+	std::cout << a << '\n' << a.Swizzle(1) << '\n';
 
 	return 0;
 }

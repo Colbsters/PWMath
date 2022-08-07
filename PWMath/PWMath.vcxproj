@@ -27,11 +27,13 @@
     <ClInclude Include="include\PWMath\Vector.h" />
     <ClInclude Include="include\PWMath\Vector2.h" />
     <ClInclude Include="include\PWMath\Vector4.h" />
+    <ClInclude Include="include\PWMath\Vector1.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\PWMath\Impl\Vector2.inl" />
     <None Include="include\PWMath\Impl\Vector3.inl" />
     <None Include="include\PWMath\Impl\Vector4.inl" />
+    <None Include="include\PWMath\Impl\Vector1.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
