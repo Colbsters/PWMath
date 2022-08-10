@@ -3,6 +3,22 @@
 
 namespace PWMath
 {
+#pragma region Unary operators
+
+	template<typename T, PackingMode P>
+	constexpr Vector<T, 2, P> operator+(const Vector<T, 2, P>& vector) noexcept
+	{
+		return vector;
+	}
+
+	template<typename T, PackingMode P>
+	constexpr Vector<T, 2, P> operator-(const Vector<T, 2, P>& vector) noexcept
+	{
+		return Vector<T, 2, P>{ -vector.x, -vector.y };
+	}
+
+#pragma endregion
+
 #pragma region Vector and scalar
 
 	template<typename T, PackingMode P>

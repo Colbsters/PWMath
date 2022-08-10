@@ -34,10 +34,12 @@ namespace PWMath
 		constexpr Vector(TVal values) noexcept :array{ static_cast<T>(values), static_cast<T>(values) } {}
 		template<typename TX, typename TY>
 		constexpr Vector(TX x, TY y) noexcept :array{ static_cast<T>(x), static_cast<T>(y) } {}
-		template<typename TArr>
-		constexpr Vector(TArr (&values)[2]) noexcept :array{ static_cast<T>(values[0]), static_cast<T>(values[1]) } {}
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 1, PVec>& y) noexcept :array{ static_cast<T>(x.x), static_cast<T>(y.x)} {}
 		template<typename TVec, PackingMode PVec>
 		constexpr Vector(const Vector<TVec, 2, PVec>& rhs) noexcept :array{ static_cast<T>(rhs.x), static_cast<T>(rhs.y) } {}
+		template<typename TArr>
+		constexpr Vector(TArr (&values)[2]) noexcept :array{ static_cast<T>(values[0]), static_cast<T>(values[1]) } {}
 
 		constexpr T& operator[](size_t index) { return array[index]; }
 		constexpr const T& operator[](size_t index) const { return array[index]; }
@@ -56,6 +58,11 @@ namespace PWMath
 		constexpr Vector<T, 3, P> Swizzle(size_t index0, size_t index1, size_t index2) { return Vector<T, 3, P>{ array[index0], array[index1], array[index2] }; }
 		constexpr Vector<T, 4, P> Swizzle(size_t index0, size_t index1, size_t index2, size_t index3) { return Vector<T, 4, P>{ array[index0], array[index1], array[index2], array[index3] }; }
 	};
+
+	template<typename T, PackingMode P>
+	constexpr Vector<T, 2, P> operator+(const Vector<T, 2, P>& vector) noexcept;
+	template<typename T, PackingMode P>
+	constexpr Vector<T, 2, P> operator-(const Vector<T, 2, P>& vector) noexcept;
 
 	template<typename T, PackingMode P>
 	constexpr Vector<T, 2, P> operator+(const Vector<T, 2, P>& lhs, T rhs) noexcept;

@@ -19,20 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\PWMath\Vector.h" />
     <ClInclude Include="include\PWMath\Vector3.h" />
     <ClInclude Include="include\PWMath\Macros.h" />
     <ClInclude Include="include\PWMath\Matrix.h" />
     <ClInclude Include="include\PWMath\Packing.h" />
     <ClInclude Include="include\PWMath\PWMath.h" />
-    <ClInclude Include="include\PWMath\Vector.h" />
     <ClInclude Include="include\PWMath\Vector2.h" />
     <ClInclude Include="include\PWMath\Vector4.h" />
     <ClInclude Include="include\PWMath\Vector1.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="include\PWMath\Impl\Matrix4.inl" />
     <None Include="include\PWMath\Impl\Vector2.inl" />
     <None Include="include\PWMath\Impl\Vector3.inl" />
-    <None Include="include\PWMath\Impl\Vector4.inl" />
     <None Include="include\PWMath\Impl\Vector1.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

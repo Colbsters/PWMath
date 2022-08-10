@@ -34,22 +34,53 @@ namespace PWMath
 		constexpr Vector(TVal values) noexcept :array{ static_cast<T>(values), static_cast<T>(values), static_cast<T>(values), static_cast<T>(values) } {}
 		template<typename TX, typename TY, typename TZ, typename TW>
 		constexpr Vector(TX x, TY y, TZ z, TW w) noexcept :array{ static_cast<T>(x), static_cast<T>(y), static_cast<T>(z), static_cast<T>(w) } {}
-		template<typename TArr>
-		constexpr Vector(TArr (&values)[4]) noexcept :array{ static_cast<T>(values[0]), static_cast<T>(values[1]), static_cast<T>(values[2]), static_cast<T>(values[3])} {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector2<TVec, PVec>& xy, TVec z, TVec w) noexcept :array{ xy.x, xy.y, z, w } {}
+		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 1, PVec>& y, const Vector<TVec, 1, PVec>& z, const Vector<TVec, 1, PVec>& w) noexcept :array{ x.x, y.x, z.x, w.x } {}
+
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(TVec x, const Vector2<TVec, PVec>& yz, TVec w) noexcept :array{ x, yz.y, yz.z, w } {}
+		constexpr Vector(const Vector<TVec, 2, PVec>& xy, TVec z, TVec w) noexcept :array{ xy.x, xy.y, z, w } {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(TVec x, TVec y, const Vector2<TVec, PVec>& zw) noexcept :array{ x, y, zw.z, zw.w } {}
+		constexpr Vector(const Vector<TVec, 2, PVec>& xy, const Vector<TVec, 1, PVec>& z, TVec w) noexcept :array{ xy.x, xy.y, z.x, w } {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector2<TVec, PVec>& xy, const Vector2<TVec, PVec>& zw) noexcept :array{ xy.x, xy.y, zw.z, zw.w } {}
+		constexpr Vector(const Vector<TVec, 2, PVec>& xy, TVec z, const Vector<TVec, 1, PVec>& w) noexcept :array{ xy.x, xy.y, z, w.x } {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector3<TVec, PVec>& xyz, TVec w) noexcept :array{ xyz.x, xyz.y, xyz.z, w } {}
+		constexpr Vector(const Vector<TVec, 2, PVec>& xy, const Vector<TVec, 1, PVec>& z, const Vector<TVec, 1, PVec>& w) noexcept :array{ xy.x, xy.y, z.x, w.x } {}
+
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(TVec x, const Vector3<TVec, PVec>& yzw) noexcept :array{ x, yzw.y, yzw.z, yzw.w } {}
+		constexpr Vector(TVec x, const Vector<TVec, 2, PVec>& yz, TVec w) noexcept :array{ x, yz.x, yz.y, w } {}
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 2, PVec>& yz, TVec w) noexcept :array{ x.x, yz.x, yz.y, w } {}
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(TVec x, const Vector<TVec, 2, PVec>& yz, const Vector<TVec, 1, PVec>& w) noexcept :array{ x, yz.x, yz.y, w.x } {}
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 2, PVec>& yz, const Vector<TVec, 1, PVec>& w) noexcept :array{ x.x, yz.x, yz.y, w.x } {}
+
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(TVec x, TVec y, const Vector<TVec, 2, PVec>& zw) noexcept :array{ x, y, zw.x, zw.y } {}
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(const Vector<TVec, 1, PVec>& x, TVec y, const Vector<TVec, 2, PVec>& zw) noexcept :array{ x.x, y, zw.x, zw.y } {}
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(TVec x, const Vector<TVec, 1, PVec>& y, const Vector<TVec, 2, PVec>& zw) noexcept :array{ x, y.x, zw.x, zw.y } {}
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 1, PVec>& y, const Vector<TVec, 2, PVec>& zw) noexcept :array{ x.x, y.x, zw.x, zw.y } {}
+
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(const Vector<TVec, 2, PVec>& xy, const Vector<TVec, 2, PVec>& zw) noexcept :array{ xy.x, xy.y, zw.x, zw.y } {}
+
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(const Vector<TVec, 3, PVec>& xyz, TVec w) noexcept :array{ xyz.x, xyz.y, xyz.z, w } {}
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(const Vector<TVec, 3, PVec>& xyz, const Vector<TVec, 1, PVec>& w) noexcept :array{ xyz.x, xyz.y, xyz.z, w.x } {}
+
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(TVec x, const Vector<TVec, 3, PVec>& yzw) noexcept :array{ x, yzw.x, yzw.y, yzw.z } {}
+		template<typename TVec, PackingMode PVec>
+		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 3, PVec>& yzw) noexcept :array{ x.x, yzw.x, yzw.y, yzw.z } {}
+
 		template<typename TVec, PackingMode PVec>
 		constexpr Vector(const Vector<TVec, 4, PVec>& rhs) noexcept :array{ static_cast<T>(rhs.x), static_cast<T>(rhs.y), static_cast<T>(rhs.z), static_cast<T>(rhs.w) } {}
+		template<typename TArr>
+		constexpr Vector(TArr (&values)[4]) noexcept :array{ static_cast<T>(values[0]), static_cast<T>(values[1]), static_cast<T>(values[2]), static_cast<T>(values[3])} {}
 
 		constexpr T& operator[](size_t index) { return array[index]; }
 		constexpr const T& operator[](size_t index) const { return array[index]; }
@@ -68,6 +99,11 @@ namespace PWMath
 		constexpr Vector<T, 3, P> Swizzle(size_t index0, size_t index1, size_t index2) { return Vector<T, 3, P>{ array[index0], array[index1], array[index2] }; }
 		constexpr Vector<T, 4, P> Swizzle(size_t index0, size_t index1, size_t index2, size_t index3) { return Vector<T, 4, P>{ array[index0], array[index1], array[index2], array[index3] }; }
 	};
+
+	template<typename T, PackingMode P>
+	constexpr Vector<T, 4, P> operator+(const Vector<T, 4, P>& vector) noexcept;
+	template<typename T, PackingMode P>
+	constexpr Vector<T, 4, P> operator-(const Vector<T, 4, P>& vector) noexcept;
 
 	template<typename T, PackingMode P>
 	constexpr Vector<T, 4, P> operator+(const Vector<T, 4, P>& lhs, T rhs) noexcept;

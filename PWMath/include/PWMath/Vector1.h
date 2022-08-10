@@ -58,6 +58,11 @@ namespace PWMath
 	};
 
 	template<typename T, PackingMode P>
+	constexpr Vector<T, 1, P> operator+(const Vector<T, 1, P>& vector) noexcept;
+	template<typename T, PackingMode P>
+	constexpr Vector<T, 1, P> operator-(const Vector<T, 1, P>& vector) noexcept;
+
+	template<typename T, PackingMode P>
 	constexpr Vector<T, 1, P> operator+(const Vector<T, 1, P>& lhs, T rhs) noexcept;
 	template<typename T, PackingMode P>
 	constexpr Vector<T, 1, P> operator-(const Vector<T, 1, P>& lhs, T rhs) noexcept;
