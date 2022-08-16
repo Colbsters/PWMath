@@ -91,6 +91,11 @@ namespace PWMath
 		T Determinant() const;
 	};
 
+	// Unary operators
+	template<typename T, PackingMode P>
+	Matrix<T, 4, 4, P> operator+(const Matrix<T, 4, 4, P>& rhs);
+	template<typename T, PackingMode P>
+	Matrix<T, 4, 4, P> operator-(const Matrix<T, 4, 4, P>& rhs);
 
 	// Addition and substraction
 	template<typename T, PackingMode P>

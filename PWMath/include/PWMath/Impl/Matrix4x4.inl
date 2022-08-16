@@ -3,6 +3,22 @@
 
 namespace PWMath
 {
+#pragma region Unary Operators
+
+	template<typename T, PackingMode P>
+	Matrix<T, 4, 4, P> operator+(const Matrix<T, 4, 4, P>& rhs)
+	{
+		return rhs;
+	}
+
+	template<typename T, PackingMode P>
+	Matrix<T, 4, 4, P> operator-(const Matrix<T, 4, 4, P>& rhs)
+	{
+		return rhs * -1;
+	}
+
+#pragma endregion
+
 #pragma region Addition and substraction
 
 	template<typename T, PackingMode P>
