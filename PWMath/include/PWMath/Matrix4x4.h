@@ -1,5 +1,6 @@
 #pragma once
 #include "PWMath/Matrix.h"
+#include "PWMath/Vector.h"
 
 #if PWM_DEFINE_OSTREAM
 #include <ostream>
