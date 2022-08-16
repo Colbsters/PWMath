@@ -4,8 +4,15 @@
 
 int main()
 {
-	PWMath::Vector2F32 a{ 2.0f, 1.0f };
-	std::cout << a << '\n' << a.Swizzle(1) << '\n' << PWMath::Vector4F32{ a, a.Swizzle(0), 1.0f } << '\n';
+	PWMath::Vector4F32 v{ 1, 0, 0, 1 };
+	PWMath::Matrix4x4F32 A{
+		1, 1, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1
+	};
+
+	std::cout << v << '\n' << A << '\n' << (v *= A) << '\n' << A * v << '\n';
 
 	return 0;
 }

@@ -42,6 +42,9 @@
     <ClInclude Include="include\PWMath\Vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\PWMath\Matrix4x4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\PWMath\Impl\Vector2.inl">
@@ -53,7 +56,10 @@
     <None Include="include\PWMath\Impl\Vector1.inl">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="include\PWMath\Impl\Matrix4.inl">
+    <None Include="include\PWMath\Impl\Matrix4x4.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="include\PWMath\Impl\Vector4.inl">
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>
