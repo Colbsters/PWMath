@@ -1,6 +1,6 @@
 #pragma once
 #include "PWMath/Matrix.h"
-#include "PWMath/Vector.h"
+#include "PWMath/Vector3.h"
 
 #if PWM_DEFINE_OSTREAM
 #include <ostream>
@@ -14,8 +14,8 @@ namespace PWMath
 	struct Matrix<T, 3, 3, P>
 	{
 		using Type = T;
-		using ColumnType = Vector<T, 3, P>;
-		using RowType = Vector<T, 3, P>;
+		using ColumnType = Vector3<T, P>;
+		using RowType = Vector3<T, P>;
 		using TransposeType = Matrix<T, 3, 3, P>;
 		static constexpr size_t colomns = 3;
 		static constexpr size_t rows = 3;
@@ -44,8 +44,8 @@ namespace PWMath
 
 		// NOTE: Each parameter is a row
 		template<typename TX, typename TY, typename TZ, PackingMode PX, PackingMode PY, PackingMode PZ>
-		Matrix(Vector<TX, 3, PX> x, Vector<TY, 3, PY> y, Vector<TZ, 3, PZ> z)
-			:array{ Vector<T, 3, P>{ x }, Vector<T, 3, P>{ y }, Vector<T, 3, P>{ z } }
+		Matrix(Vector3<TX, PX> x, Vector3<TY, PY> y, Vector3<TZ, PZ> z)
+			:array{ Vector3<T, P>{ x }, Vector3<T, P>{ y }, Vector3<T, P>{ z } }
 		{}
 
 		// NOTE: Row major ordering

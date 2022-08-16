@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\PWMath\Matrix2x2.h" />
     <ClInclude Include="include\PWMath\Matrix3x3.h" />
     <ClInclude Include="include\PWMath\Matrix4x4.h" />
     <ClInclude Include="include\PWMath\Vector.h" />
@@ -31,6 +32,7 @@
     <ClInclude Include="include\PWMath\Vector4.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="include\PWMath\Impl\Matrix2x2.inl" />
     <None Include="include\PWMath\Impl\Matrix4x4.inl" />
     <None Include="include\PWMath\Impl\Vector2.inl" />
     <None Include="include\PWMath\Impl\Vector3.inl" />
