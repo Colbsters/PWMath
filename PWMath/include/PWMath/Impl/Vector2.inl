@@ -182,16 +182,16 @@ namespace PWMath
 #pragma region Member versions of functions
 
 	template<typename T, PackingMode P>
-	constexpr T Vector<T, 2, P>::Length() { return PWMath::Length(*this); }
+	constexpr T Vector<T, 2, P>::Length() const { return PWMath::Length(*this); }
 
 	template<typename T, PackingMode P>
-	constexpr T Vector<T, 2, P>::Length2() { return PWMath::Length2(*this); }
+	constexpr T Vector<T, 2, P>::Length2() const { return PWMath::Length2(*this); }
 
 	template<typename T, PackingMode P>
-	constexpr Vector<T, 2, P> Vector<T, 2, P>::Normalize() { return PWMath::Normalize(*this); }
+	constexpr Vector<T, 2, P> Vector<T, 2, P>::Normalize() const { return PWMath::Normalize(*this); }
 
 	template<typename T, PackingMode P>
-	constexpr T Vector<T, 2, P>::Dot(const Vector<T, 2, P>& rhs) { return PWMath::Dot(*this, rhs); }
+	constexpr T Vector<T, 2, P>::Dot(const Vector<T, 2, P>& rhs) const { return PWMath::Dot(*this, rhs); }
 
 #pragma endregion
 }

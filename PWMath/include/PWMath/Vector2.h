@@ -35,8 +35,6 @@ namespace PWMath
 		template<typename TX, typename TY>
 		constexpr Vector(TX x, TY y) noexcept :array{ static_cast<T>(x), static_cast<T>(y) } {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 1, PVec>& y) noexcept :array{ static_cast<T>(x.x), static_cast<T>(y.x)} {}
-		template<typename TVec, PackingMode PVec>
 		constexpr Vector(const Vector<TVec, 2, PVec>& rhs) noexcept :array{ static_cast<T>(rhs.x), static_cast<T>(rhs.y) } {}
 		template<typename TArr>
 		constexpr Vector(TArr (&values)[2]) noexcept :array{ static_cast<T>(values[0]), static_cast<T>(values[1]) } {}
@@ -48,15 +46,14 @@ namespace PWMath
 
 		bool operator==(const Vector& rhs) const = default;
 
-		constexpr T Length();
-		constexpr T Length2();
-		constexpr Vector Normalize();
-		constexpr T Dot(const Vector<T, 2, P>& rhs);
+		constexpr T Length() const;
+		constexpr T Length2() const;
+		constexpr Vector Normalize() const;
+		constexpr T Dot(const Vector<T, 2, P>& rhs) const;
 
-		constexpr Vector<T, 1, P> Swizzle(size_t index0) { return Vector<T, 1, P>{ array[index0] }; }
-		constexpr Vector<T, 2, P> Swizzle(size_t index0, size_t index1) { return Vector<T, 2, P>{ array[index0], array[index1] }; }
-		constexpr Vector<T, 3, P> Swizzle(size_t index0, size_t index1, size_t index2) { return Vector<T, 3, P>{ array[index0], array[index1], array[index2] }; }
-		constexpr Vector<T, 4, P> Swizzle(size_t index0, size_t index1, size_t index2, size_t index3) { return Vector<T, 4, P>{ array[index0], array[index1], array[index2], array[index3] }; }
+		constexpr Vector<T, 2, P> Swizzle(size_t index0, size_t index1) const { return Vector<T, 2, P>{ array[index0], array[index1] }; }
+		constexpr Vector<T, 3, P> Swizzle(size_t index0, size_t index1, size_t index2) const { return Vector<T, 3, P>{ array[index0], array[index1], array[index2] }; }
+		constexpr Vector<T, 4, P> Swizzle(size_t index0, size_t index1, size_t index2, size_t index3) const { return Vector<T, 4, P>{ array[index0], array[index1], array[index2], array[index3] }; }
 	};
 
 	template<typename T, PackingMode P>

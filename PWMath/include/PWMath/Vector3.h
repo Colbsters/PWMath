@@ -35,15 +35,9 @@ namespace PWMath
 		template<typename TX, typename TY, typename TZ>
 		constexpr Vector(TX x, TY y, TZ z) noexcept :array{ static_cast<T>(x), static_cast<T>(y), static_cast<T>(z) } {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 1, PVec>& y, const Vector<TVec, 1, PVec>& z) noexcept :array{ static_cast<T>(x.x), static_cast<T>(y.x), static_cast<T>(z.x) } {}
-		template<typename TVec, PackingMode PVec>
 		constexpr Vector(const Vector<TVec, 2, PVec>& xy, TVec z) noexcept :array{ static_cast<T>(xy.x), static_cast<T>(xy.y), static_cast<T>(z) } {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 2, PVec>& xy, const Vector<TVec, 1, PVec>& z) noexcept :array{ static_cast<T>(xy.x), static_cast<T>(xy.y), static_cast<T>(z.x) } {}
-		template<typename TVec, PackingMode PVec>
 		constexpr Vector(TVec x, const Vector<TVec, 2, PVec>& yz) noexcept :array{ static_cast<T>(x), static_cast<T>(yz.x), static_cast<T>(yz.y) } {}
-		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 2, PVec>& yz) noexcept :array{ static_cast<T>(x.x), static_cast<T>(yz.x), static_cast<T>(yz.y) } {}
 		template<typename TVec, PackingMode PVec>
 		constexpr Vector(const Vector<TVec, 3, PVec>& rhs) noexcept :array{ static_cast<T>(rhs.x), static_cast<T>(rhs.y),  static_cast<T>(rhs.z) } {}
 		template<typename TArr>
@@ -56,16 +50,15 @@ namespace PWMath
 
 		bool operator==(const Vector& rhs) const = default;
 
-		constexpr T Length();
-		constexpr T Length2();
-		constexpr Vector Normalize();
-		constexpr T Dot(const Vector<T, 3, P>& rhs);
-		constexpr Vector Cross(const Vector<T, 3, P>& rhs);
+		constexpr T Length() const;
+		constexpr T Length2() const;
+		constexpr Vector Normalize() const;
+		constexpr T Dot(const Vector<T, 3, P>& rhs) const;
+		constexpr Vector Cross(const Vector<T, 3, P>& rhs) const;
 
-		constexpr Vector<T, 1, P> Swizzle(size_t index0) { return Vector<T, 1, P>{ array[index0] }; }
-		constexpr Vector<T, 2, P> Swizzle(size_t index0, size_t index1) { return Vector<T, 2, P>{ array[index0], array[index1] }; }
-		constexpr Vector<T, 3, P> Swizzle(size_t index0, size_t index1, size_t index2) { return Vector<T, 3, P>{ array[index0], array[index1], array[index2] }; }
-		constexpr Vector<T, 4, P> Swizzle(size_t index0, size_t index1, size_t index2, size_t index3) { return Vector<T, 4, P>{ array[index0], array[index1], array[index2], array[index3] }; }
+		constexpr Vector<T, 2, P> Swizzle(size_t index0, size_t index1) const { return Vector<T, 2, P>{ array[index0], array[index1] }; }
+		constexpr Vector<T, 3, P> Swizzle(size_t index0, size_t index1, size_t index2) const { return Vector<T, 3, P>{ array[index0], array[index1], array[index2] }; }
+		constexpr Vector<T, 4, P> Swizzle(size_t index0, size_t index1, size_t index2, size_t index3) const { return Vector<T, 4, P>{ array[index0], array[index1], array[index2], array[index3] }; }
 	};
 
 	template<typename T, PackingMode P>

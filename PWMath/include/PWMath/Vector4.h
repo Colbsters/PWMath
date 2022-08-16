@@ -40,42 +40,16 @@ namespace PWMath
 		template<typename TVec, PackingMode PVec>
 		constexpr Vector(const Vector<TVec, 2, PVec>& xy, TVec z, TVec w) noexcept :array{ xy.x, xy.y, z, w } {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 2, PVec>& xy, const Vector<TVec, 1, PVec>& z, TVec w) noexcept :array{ xy.x, xy.y, z.x, w } {}
-		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 2, PVec>& xy, TVec z, const Vector<TVec, 1, PVec>& w) noexcept :array{ xy.x, xy.y, z, w.x } {}
-		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 2, PVec>& xy, const Vector<TVec, 1, PVec>& z, const Vector<TVec, 1, PVec>& w) noexcept :array{ xy.x, xy.y, z.x, w.x } {}
-
-		template<typename TVec, PackingMode PVec>
 		constexpr Vector(TVec x, const Vector<TVec, 2, PVec>& yz, TVec w) noexcept :array{ x, yz.x, yz.y, w } {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 2, PVec>& yz, TVec w) noexcept :array{ x.x, yz.x, yz.y, w } {}
-		template<typename TVec, PackingMode PVec>
-		constexpr Vector(TVec x, const Vector<TVec, 2, PVec>& yz, const Vector<TVec, 1, PVec>& w) noexcept :array{ x, yz.x, yz.y, w.x } {}
-		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 2, PVec>& yz, const Vector<TVec, 1, PVec>& w) noexcept :array{ x.x, yz.x, yz.y, w.x } {}
-
-		template<typename TVec, PackingMode PVec>
 		constexpr Vector(TVec x, TVec y, const Vector<TVec, 2, PVec>& zw) noexcept :array{ x, y, zw.x, zw.y } {}
-		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 1, PVec>& x, TVec y, const Vector<TVec, 2, PVec>& zw) noexcept :array{ x.x, y, zw.x, zw.y } {}
-		template<typename TVec, PackingMode PVec>
-		constexpr Vector(TVec x, const Vector<TVec, 1, PVec>& y, const Vector<TVec, 2, PVec>& zw) noexcept :array{ x, y.x, zw.x, zw.y } {}
-		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 1, PVec>& y, const Vector<TVec, 2, PVec>& zw) noexcept :array{ x.x, y.x, zw.x, zw.y } {}
-
 		template<typename TVec, PackingMode PVec>
 		constexpr Vector(const Vector<TVec, 2, PVec>& xy, const Vector<TVec, 2, PVec>& zw) noexcept :array{ xy.x, xy.y, zw.x, zw.y } {}
 
 		template<typename TVec, PackingMode PVec>
 		constexpr Vector(const Vector<TVec, 3, PVec>& xyz, TVec w) noexcept :array{ xyz.x, xyz.y, xyz.z, w } {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 3, PVec>& xyz, const Vector<TVec, 1, PVec>& w) noexcept :array{ xyz.x, xyz.y, xyz.z, w.x } {}
-
-		template<typename TVec, PackingMode PVec>
 		constexpr Vector(TVec x, const Vector<TVec, 3, PVec>& yzw) noexcept :array{ x, yzw.x, yzw.y, yzw.z } {}
-		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 3, PVec>& yzw) noexcept :array{ x.x, yzw.x, yzw.y, yzw.z } {}
 
 		template<typename TVec, PackingMode PVec>
 		constexpr Vector(const Vector<TVec, 4, PVec>& rhs) noexcept :array{ static_cast<T>(rhs.x), static_cast<T>(rhs.y), static_cast<T>(rhs.z), static_cast<T>(rhs.w) } {}
@@ -89,15 +63,14 @@ namespace PWMath
 
 		bool operator==(const Vector& rhs) const = default;
 
-		constexpr T Length();
-		constexpr T Length2();
-		constexpr Vector Normalize();
-		constexpr T Dot(const Vector<T, 4, P>& rhs);
+		constexpr T Length() const;
+		constexpr T Length2() const;
+		constexpr Vector Normalize() const;
+		constexpr T Dot(const Vector<T, 4, P>& rhs) const;
 
-		constexpr Vector<T, 1, P> Swizzle(size_t index0) { return Vector<T, 1, P>{ array[index0] }; }
-		constexpr Vector<T, 2, P> Swizzle(size_t index0, size_t index1) { return Vector<T, 2, P>{ array[index0], array[index1] }; }
-		constexpr Vector<T, 3, P> Swizzle(size_t index0, size_t index1, size_t index2) { return Vector<T, 3, P>{ array[index0], array[index1], array[index2] }; }
-		constexpr Vector<T, 4, P> Swizzle(size_t index0, size_t index1, size_t index2, size_t index3) { return Vector<T, 4, P>{ array[index0], array[index1], array[index2], array[index3] }; }
+		constexpr Vector<T, 2, P> Swizzle(size_t index0, size_t index1) const { return Vector<T, 2, P>{ array[index0], array[index1] }; }
+		constexpr Vector<T, 3, P> Swizzle(size_t index0, size_t index1, size_t index2) const { return Vector<T, 3, P>{ array[index0], array[index1], array[index2] }; }
+		constexpr Vector<T, 4, P> Swizzle(size_t index0, size_t index1, size_t index2, size_t index3) const { return Vector<T, 4, P>{ array[index0], array[index1], array[index2], array[index3] }; }
 	};
 
 	template<typename T, PackingMode P>
