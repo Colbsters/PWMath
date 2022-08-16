@@ -40,7 +40,7 @@ namespace PWMath
 				{ static_cast<T>(identityVal), 0, 0, 0 },
 				{ 0, static_cast<T>(identityVal), 0, 0 },
 				{ 0, 0, static_cast<T>(identityVal), 0 },
-				{ 0, 0, 0, static_cast<T>(identityVal) }}
+				{ 0, 0, 0, static_cast<T>(identityVal) } }
 		{}
 
 		// NOTE: Each parameter is a row
@@ -51,10 +51,10 @@ namespace PWMath
 
 		// NOTE: Row major ordering
 		template<
-			typename T00,typename T01,typename T02,typename T03, 
-			typename T10,typename T11,typename T12,typename T13,
-			typename T20,typename T21,typename T22,typename T23,
-			typename T30,typename T31,typename T32,typename T33>
+			typename T00, typename T01, typename T02, typename T03,
+			typename T10, typename T11, typename T12, typename T13,
+			typename T20, typename T21, typename T22, typename T23,
+			typename T30, typename T31, typename T32, typename T33>
 		Matrix(
 			T00 _00, T01 _01, T02 _02, T03 _03,
 			T10 _10, T11 _11, T12 _12, T13 _13,
@@ -69,7 +69,7 @@ namespace PWMath
 
 		// NOTE: Row major ordering
 		template<typename TArr>
-		Matrix(TArr (&vals)[16])
+		Matrix(TArr(&vals)[16])
 			:array{
 				{ vals[0], vals[1], vals[2], vals[3] },
 				{ vals[4], vals[5], vals[6], vals[7] },
@@ -87,8 +87,6 @@ namespace PWMath
 
 		bool operator==(const Matrix&) const = default;
 
-		constexpr Matrix<T, 4, 4, P> Swizzle(size_t index0, size_t index1, size_t index2, size_t index3) { return Matrix<T, 4, 4, P>{ array[index0], array[index1], array[index2], array[index3] }; }
-	
 		TransposeType Transpose() const;
 		T Determinant() const;
 	};
@@ -139,9 +137,9 @@ namespace PWMath
 	inline std::ostream& operator<<(std::ostream& stream, Matrix<T, 4, 4, P> matrix)
 	{
 		stream << "[[" << matrix[0][0] << ", " << matrix[0][1] << ", " << matrix[0][2] << ", " << matrix[0][3] << "], "
-				<< '[' << matrix[1][0] << ", " << matrix[1][1] << ", " << matrix[1][2] << ", " << matrix[1][3] << "], "
-				<< '[' << matrix[2][0] << ", " << matrix[2][1] << ", " << matrix[2][2] << ", " << matrix[2][3] << "], "
-				<< '[' << matrix[3][0] << ", " << matrix[3][1] << ", " << matrix[3][2] << ", " << matrix[3][3] << "]]";
+			<< '[' << matrix[1][0] << ", " << matrix[1][1] << ", " << matrix[1][2] << ", " << matrix[1][3] << "], "
+			<< '[' << matrix[2][0] << ", " << matrix[2][1] << ", " << matrix[2][2] << ", " << matrix[2][3] << "], "
+			<< '[' << matrix[3][0] << ", " << matrix[3][1] << ", " << matrix[3][2] << ", " << matrix[3][3] << "]]";
 		return stream;
 	}
 
@@ -150,16 +148,16 @@ namespace PWMath
 	template<typename T, PackingMode P = PackingMode::Default>
 	using Matrix4x4 = Matrix<T, 4, 4, P>;
 
-	using Matrix4x4F32	= Matrix4x4<float>;
-	using Matrix4x4F64	= Matrix4x4<double>;
-	using Matrix4x4I8	= Matrix4x4<int8_t>;
-	using Matrix4x4I16	= Matrix4x4<int16_t>;
-	using Matrix4x4I32	= Matrix4x4<int32_t>;
-	using Matrix4x4I64	= Matrix4x4<int64_t>;
-	using Matrix4x4U8	= Matrix4x4<uint8_t>;
-	using Matrix4x4U16	= Matrix4x4<uint16_t>;
-	using Matrix4x4U32	= Matrix4x4<uint32_t>;
-	using Matrix4x4U64	= Matrix4x4<uint64_t>;
+	using Matrix4x4F32 = Matrix4x4<float>;
+	using Matrix4x4F64 = Matrix4x4<double>;
+	using Matrix4x4I8 = Matrix4x4<int8_t>;
+	using Matrix4x4I16 = Matrix4x4<int16_t>;
+	using Matrix4x4I32 = Matrix4x4<int32_t>;
+	using Matrix4x4I64 = Matrix4x4<int64_t>;
+	using Matrix4x4U8 = Matrix4x4<uint8_t>;
+	using Matrix4x4U16 = Matrix4x4<uint16_t>;
+	using Matrix4x4U32 = Matrix4x4<uint32_t>;
+	using Matrix4x4U64 = Matrix4x4<uint64_t>;
 }
 
 #include <PWMath/Impl/Matrix4x4.inl>

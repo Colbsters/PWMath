@@ -162,10 +162,10 @@ namespace PWMath
 #pragma region Member version of functions
 
 	template<typename T, PackingMode P>
-	inline Matrix<T, 4, 4, P>::TransposeType Matrix<T, 4, 4, P>::Transpose() const { return Transpose(*this); }
+	inline Matrix<T, 4, 4, P>::TransposeType Matrix<T, 4, 4, P>::Transpose() const { return PWMath::Transpose(*this); }
 
 	template<typename T, PackingMode P>
-	inline T Matrix<T, 4, 4, P>::Determinant() const { return Determinant(*this); }
+	inline T Matrix<T, 4, 4, P>::Determinant() const { return PWMath::Determinant(*this); }
 
 #pragma endregion
 

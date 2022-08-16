@@ -4,12 +4,11 @@
 
 int main()
 {
-	PWMath::Vector4F32 v{ 1, 0, 0, 1 };
-	PWMath::Matrix4x4F32 A{
-		1, 1, 0, 0,
-		0, 1, 0, 0,
-		0, 0, 1, 0,
-		0, 0, 0, 1
+	PWMath::Vector3F32 v{ 1, 0, 0 };
+	PWMath::Matrix3x3F32 A{
+		1, 1, 0,
+		0, 1, 0,
+		0, 0, 1
 	};
 
 	std::cout << v << '\n' << A << '\n' << (v *= A) << '\n' << A * v << '\n';

@@ -6,4 +6,5 @@
 #include <PWMath/Vector4.h>
 
 #include <PWMath/Matrix.h>
+#include <PWMath/Matrix3x3.h>
 #include <PWMath/Matrix4x4.h>
