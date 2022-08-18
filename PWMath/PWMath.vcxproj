@@ -30,6 +30,7 @@
     <ClInclude Include="include\PWMath\PWMath.h" />
     <ClInclude Include="include\PWMath\Vector2.h" />
     <ClInclude Include="include\PWMath\Vector4.h" />
+    <ClInclude Include="include\PWMath\Vector4Fast.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\PWMath\Impl\Matrix2x2.inl" />
@@ -38,6 +39,7 @@
     <None Include="include\PWMath\Impl\Vector3.inl" />
     <None Include="include\PWMath\Impl\Vector4.inl" />
     <None Include="include\PWMath\Impl\Matrix3x3.inl" />
+    <None Include="include\PWMath\Impl\Vector4Fast.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

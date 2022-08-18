@@ -34,9 +34,7 @@ namespace PWMath
 		constexpr Vector(TVal values) noexcept :array{ static_cast<T>(values), static_cast<T>(values), static_cast<T>(values), static_cast<T>(values) } {}
 		template<typename TX, typename TY, typename TZ, typename TW>
 		constexpr Vector(TX x, TY y, TZ z, TW w) noexcept :array{ static_cast<T>(x), static_cast<T>(y), static_cast<T>(z), static_cast<T>(w) } {}
-		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 1, PVec>& x, const Vector<TVec, 1, PVec>& y, const Vector<TVec, 1, PVec>& z, const Vector<TVec, 1, PVec>& w) noexcept :array{ x.x, y.x, z.x, w.x } {}
-
+		
 		template<typename TVec, PackingMode PVec>
 		constexpr Vector(const Vector<TVec, 2, PVec>& xy, TVec z, TVec w) noexcept :array{ xy.x, xy.y, z, w } {}
 		template<typename TVec, PackingMode PVec>
@@ -155,6 +153,20 @@ namespace PWMath
 	using Vector4U16	= Vector4<uint16_t>;
 	using Vector4U32	= Vector4<uint32_t>;
 	using Vector4U64	= Vector4<uint64_t>;
+
+	template<typename T>
+	using Vector4Fast = Vector<T, 4, PackingMode::Fast>;
+
+	using Vector4F32Fast	= Vector4Fast<float>;
+	using Vector4F64Fast	= Vector4Fast<double>;
+	using Vector4I8Fast		= Vector4Fast<int8_t>;
+	using Vector4I16Fast	= Vector4Fast<int16_t>;
+	using Vector4I32Fast	= Vector4Fast<int32_t>;
+	using Vector4I64Fast	= Vector4Fast<int64_t>;
+	using Vector4U8Fast		= Vector4Fast<uint8_t>;
+	using Vector4U16Fast	= Vector4Fast<uint16_t>;
+	using Vector4U32Fast	= Vector4Fast<uint32_t>;
+	using Vector4U64Fast	= Vector4Fast<uint64_t>;
 }
 
 #include <PWMath/Impl/Vector4.inl>
