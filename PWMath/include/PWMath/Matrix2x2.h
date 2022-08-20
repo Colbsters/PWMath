@@ -37,14 +37,19 @@ namespace PWMath
 		template<typename TVal>
 		Matrix(TVal identityVal)
 			:array{
-				{ static_cast<T>(identityVal), 0 },
-				{ 0, static_cast<T>(identityVal) } }
+				{ static_cast<T>(identityVal), static_cast<T>(0) },
+				{ static_cast<T>(0), static_cast<T>(identityVal) } }
 		{}
 
 		// NOTE: Each parameter is a row
 		template<typename TX, typename TY, PackingMode PX, PackingMode PY>
 		Matrix(Vector2<TX, PX> x, Vector2<TY, PY> y)
 			:array{ Vector2<T, P>{ x }, Vector2<T, P>{ y } }
+		{}
+
+		template<typename TMat, PackingMode PMat>
+		Matrix(Matrix<TMat, 2, 2, PMat> matrix)
+			: array{ Vector2<T, P>{ matrix[0] }, Vector2<T, P>{ matrix[1] } }
 		{}
 
 		// NOTE: Row major ordering
@@ -55,16 +60,16 @@ namespace PWMath
 			T00 _00, T01 _01,
 			T10 _10, T11 _11)
 			:array{
-				{ _00, _01 },
-				{ _10, _11 } }
+				{ static_cast<T>(_00), static_cast<T>(_01) },
+				{ static_cast<T>(_10), static_cast<T>(_11) } }
 		{}
 
 		// NOTE: Row major ordering
 		template<typename TArr>
 		Matrix(TArr(&vals)[4])
 			:array{
-				{ vals[0], vals[1] },
-				{ vals[2], vals[3] } }
+				{ static_cast<T>(vals[0]), static_cast<T>(vals[1]) },
+				{ static_cast<T>(vals[2]), static_cast<T>(vals[3]) } }
 		{}
 
 		RowType GetRow(size_t index) const { return array[index]; }

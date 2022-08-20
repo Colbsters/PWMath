@@ -37,16 +37,21 @@ namespace PWMath
 		template<typename TVal>
 		Matrix(TVal identityVal)
 			:array{
-				{ static_cast<T>(identityVal), 0, 0, 0 },
-				{ 0, static_cast<T>(identityVal), 0, 0 },
-				{ 0, 0, static_cast<T>(identityVal), 0 },
-				{ 0, 0, 0, static_cast<T>(identityVal) } }
+				{ static_cast<T>(identityVal), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0) },
+				{ static_cast<T>(0), static_cast<T>(identityVal), static_cast<T>(0), static_cast<T>(0) },
+				{ static_cast<T>(0), static_cast<T>(0), static_cast<T>(identityVal), static_cast<T>(0) },
+				{ static_cast<T>(0), static_cast<T>(0), static_cast<T>(0), static_cast<T>(identityVal) } }
 		{}
 
 		// NOTE: Each parameter is a row
 		template<typename TX, typename TY, typename TZ, typename TW, PackingMode PX, PackingMode PY, PackingMode PZ, PackingMode PW>
 		Matrix(Vector4<TX, PX> x, Vector4<TY, PY> y, Vector4<TZ, PZ> z, Vector4<TW, PW> w)
 			:array{ Vector4<T, P>{ x }, Vector4<T, P>{ y }, Vector4<T, P>{ z }, Vector4<T, P>{ w } }
+		{}
+
+		template<typename TMat, PackingMode PMat>
+		Matrix(Matrix<TMat, 4, 4, PMat> matrix)
+			: array{ Vector4<T, P>{ matrix[0] }, Vector4<T, P>{ matrix[1] }, Vector4<T, P>{ matrix[2] }, Vector4<T, P>{ matrix[3] } }
 		{}
 
 		// NOTE: Row major ordering
@@ -61,20 +66,20 @@ namespace PWMath
 			T20 _20, T21 _21, T22 _22, T23 _23,
 			T30 _30, T31 _31, T32 _32, T33 _33)
 			:array{
-				{ _00, _01, _02, _03 },
-				{ _10, _11, _12, _13 },
-				{ _20, _21, _22, _23 },
-				{ _30, _31, _32, _33 } }
+				{ static_cast<T>(_00), static_cast<T>(_01), static_cast<T>(_02), static_cast<T>(_03) },
+				{ static_cast<T>(_10), static_cast<T>(_11), static_cast<T>(_12), static_cast<T>(_13) },
+				{ static_cast<T>(_20), static_cast<T>(_21), static_cast<T>(_22), static_cast<T>(_23) },
+				{ static_cast<T>(_30), static_cast<T>(_31), static_cast<T>(_32), static_cast<T>(_33) } }
 		{}
 
 		// NOTE: Row major ordering
 		template<typename TArr>
 		Matrix(TArr(&vals)[16])
 			:array{
-				{ vals[0], vals[1], vals[2], vals[3] },
-				{ vals[4], vals[5], vals[6], vals[7] },
-				{ vals[8], vals[9], vals[10], vals[11] },
-				{ vals[12], vals[13], vals[14], vals[15] } }
+				{ static_cast<T>(vals[0]), static_cast<T>(vals[1]), static_cast<T>(vals[2]), static_cast<T>(vals[3]) },
+				{ static_cast<T>(vals[4]), static_cast<T>(vals[5]), static_cast<T>(vals[6]), static_cast<T>(vals[7]) },
+				{ static_cast<T>(vals[8]), static_cast<T>(vals[9]), static_cast<T>(vals[10]), static_cast<T>(vals[11]) },
+				{ static_cast<T>(vals[12]), static_cast<T>(vals[13]), static_cast<T>(vals[14]), static_cast<T>(vals[15]) } }
 		{}
 
 		RowType GetRow(size_t index) const { return array[index]; }

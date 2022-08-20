@@ -37,15 +37,20 @@ namespace PWMath
 		template<typename TVal>
 		Matrix(TVal identityVal)
 			:array{
-				{ static_cast<T>(identityVal), 0, 0 },
-				{ 0, static_cast<T>(identityVal), 0 },
-				{ 0, 0, static_cast<T>(identityVal) } }
+				{ static_cast<T>(identityVal), static_cast<T>(0), static_cast<T>(0) },
+				{ static_cast<T>(0), static_cast<T>(identityVal), static_cast<T>(0) },
+				{ static_cast<T>(0), static_cast<T>(0), static_cast<T>(identityVal) } }
 		{}
 
 		// NOTE: Each parameter is a row
 		template<typename TX, typename TY, typename TZ, PackingMode PX, PackingMode PY, PackingMode PZ>
 		Matrix(Vector3<TX, PX> x, Vector3<TY, PY> y, Vector3<TZ, PZ> z)
 			:array{ Vector3<T, P>{ x }, Vector3<T, P>{ y }, Vector3<T, P>{ z } }
+		{}
+
+		template<typename TMat, PackingMode PMat>
+		Matrix(Matrix<TMat, 3, 3, PMat> matrix)
+			: array{ Vector3<T, P>{ matrix[0] }, Vector3<T, P>{ matrix[1] }, Vector3<T, P>{ matrix[2] } }
 		{}
 
 		// NOTE: Row major ordering
@@ -58,18 +63,18 @@ namespace PWMath
 			T10 _10, T11 _11, T12 _12,
 			T20 _20, T21 _21, T22 _22)
 			:array{
-				{ _00, _01, _02 },
-				{ _10, _11, _12 },
-				{ _20, _21, _22 } }
+				{ static_cast<T>(_00), static_cast<T>(_01), static_cast<T>(_02) },
+				{ static_cast<T>(_10), static_cast<T>(_11), static_cast<T>(_12) },
+				{ static_cast<T>(_20), static_cast<T>(_21), static_cast<T>(_22) } }
 		{}
 
 		// NOTE: Row major ordering
 		template<typename TArr>
 		Matrix(TArr(&vals)[9])
 			:array{
-				{ vals[0], vals[1], vals[2] },
-				{ vals[3], vals[4], vals[5] },
-				{ vals[6], vals[7], vals[9] } }
+				{ static_cast<T>(vals[0]), static_cast<T>(vals[1]), static_cast<T>(vals[2]) },
+				{ static_cast<T>(vals[3]), static_cast<T>(vals[4]), static_cast<T>(vals[5]) },
+				{ static_cast<T>(vals[6]), static_cast<T>(vals[7]), static_cast<T>(vals[9]) } }
 		{}
 
 		RowType GetRow(size_t index) const { return array[index]; }

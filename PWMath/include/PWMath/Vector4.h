@@ -36,18 +36,18 @@ namespace PWMath
 		constexpr Vector(TX x, TY y, TZ z, TW w) noexcept :array{ static_cast<T>(x), static_cast<T>(y), static_cast<T>(z), static_cast<T>(w) } {}
 		
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 2, PVec>& xy, TVec z, TVec w) noexcept :array{ xy.x, xy.y, z, w } {}
+		constexpr Vector(const Vector<TVec, 2, PVec>& xy, TVec z, TVec w) noexcept :array{ static_cast<T>(xy.x), static_cast<T>(xy.y), static_cast<T>(z), static_cast<T>(w) } {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(TVec x, const Vector<TVec, 2, PVec>& yz, TVec w) noexcept :array{ x, yz.x, yz.y, w } {}
+		constexpr Vector(TVec x, const Vector<TVec, 2, PVec>& yz, TVec w) noexcept :array{ static_cast<T>(x), static_cast<T>(yz.x), static_cast<T>(yz.y), static_cast<T>(w) } {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(TVec x, TVec y, const Vector<TVec, 2, PVec>& zw) noexcept :array{ x, y, zw.x, zw.y } {}
+		constexpr Vector(TVec x, TVec y, const Vector<TVec, 2, PVec>& zw) noexcept :array{ static_cast<T>(x), static_cast<T>(y), static_cast<T>(zw.x), static_cast<T>(zw.y) } {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 2, PVec>& xy, const Vector<TVec, 2, PVec>& zw) noexcept :array{ xy.x, xy.y, zw.x, zw.y } {}
+		constexpr Vector(const Vector<TVec, 2, PVec>& xy, const Vector<TVec, 2, PVec>& zw) noexcept :array{ static_cast<T>(xy.x), static_cast<T>(xy.y), static_cast<T>(zw.x), static_cast<T>(zw.y) } {}
 
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(const Vector<TVec, 3, PVec>& xyz, TVec w) noexcept :array{ xyz.x, xyz.y, xyz.z, w } {}
+		constexpr Vector(const Vector<TVec, 3, PVec>& xyz, TVec w) noexcept :array{ static_cast<T>(xyz.x), static_cast<T>(xyz.y), static_cast<T>(xyz.z), static_cast<T>(w) } {}
 		template<typename TVec, PackingMode PVec>
-		constexpr Vector(TVec x, const Vector<TVec, 3, PVec>& yzw) noexcept :array{ x, yzw.x, yzw.y, yzw.z } {}
+		constexpr Vector(TVec x, const Vector<TVec, 3, PVec>& yzw) noexcept :array{ static_cast<T>(x), static_cast<T>(yzw.x), static_cast<T>(yzw.y), static_cast<T>(yzw.z) } {}
 
 		template<typename TVec, PackingMode PVec>
 		constexpr Vector(const Vector<TVec, 4, PVec>& rhs) noexcept :array{ static_cast<T>(rhs.x), static_cast<T>(rhs.y), static_cast<T>(rhs.z), static_cast<T>(rhs.w) } {}
