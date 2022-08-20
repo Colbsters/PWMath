@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\PWMath\Impl\Transform.inl" />
+    <ClInclude Include="include\PWMath\Transform.h" />
     <ClInclude Include="include\PWMath\Matrix2x2.h" />
     <ClInclude Include="include\PWMath\Matrix3x3.h" />
     <ClInclude Include="include\PWMath\Matrix4x4.h" />

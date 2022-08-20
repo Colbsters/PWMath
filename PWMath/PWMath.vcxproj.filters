@@ -51,6 +51,12 @@
     <ClInclude Include="include\PWMath\Vector4Fast.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\PWMath\Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PWMath\Impl\Transform.inl">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\PWMath\Impl\Vector2.inl">
