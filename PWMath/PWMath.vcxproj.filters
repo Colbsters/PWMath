@@ -57,6 +57,12 @@
     <ClInclude Include="include\PWMath\Impl\Transform.inl">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\PWMath\Projection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PWMath\Impl\Projection.inl">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\PWMath\Impl\Vector2.inl">

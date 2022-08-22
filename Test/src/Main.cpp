@@ -1,14 +1,18 @@
 #include <iostream>
 #define PWM_DEFINE_OSTREAM 1
 #include <PWMath/PWMath.h>
+#include <PWMath/Projection.h>
 
 int main()
 {
-	auto transform = PWMath::Rotate(PWMath::Matrix2x2F32{ 1 }, 3.141592654 / 2);
+	auto transform = PWMath::PerpectiveGL(1.57079632f, 1.0f, 0.1f, 1.0f);
 
 	std::cout << transform << '\n';
 
-	std::cout << PWMath::Vector2F32{ 6, 3 } * transform << '\n';
+	auto pos = PWMath::Vector4F32{ 0.5, 0.5, 1, 1 } * transform;
+	pos /= pos.w;
+
+	std::cout << pos << '\n';
 
 	return 0;
 }
